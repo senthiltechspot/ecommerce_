@@ -6,10 +6,10 @@ module.exports = (app) => {
     app.post("/ecomm/api/v1/category", authJWT.adminOnly, categoryController.createCategory)
 
     //get all the routes
-    app.get("/ecomm/api/v1/category", authJWT.adminOnly, categoryController.getAllCategories);
+    app.get("/ecomm/api/v1/category", categoryController.getAllCategories);
 
     //get route by category id
-    app.get("/ecomm/api/v1/category/:categoryId", authJWT.adminOnly, categoryController.getCategoryById);
+    app.get("/ecomm/api/v1/category/:categoryId", categoryController.getCategoryById);
 
     //Update a route by given id
     app.put("/ecomm/api/v1/category/:categoryId", authJWT.adminOnly, categoryController.updateCategory);

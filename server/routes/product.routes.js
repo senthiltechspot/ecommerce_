@@ -6,10 +6,10 @@ module.exports = (app) => {
     app.post("/ecomm/api/v1/products", authJWT.adminOnly, ProductControllers.createProduct)
 
     // Get all the routes
-    app.get("/ecomm/api/v1/products", authJWT.adminOnly, ProductControllers.getAllProducts);
+    app.get("/ecomm/api/v1/products", ProductControllers.getAllProducts);
 
-    // Get route by category id
-    app.get("/ecomm/api/v1/products/:productId", authJWT.adminOnly, ProductControllers.getProductById);
+    // Get route by Product id
+    app.get("/ecomm/api/v1/products/:productId", ProductControllers.getProductById);
 
     // Update a route by given id
     app.put("/ecomm/api/v1/products/:productId", authJWT.adminOnly, ProductControllers.updateProduct);

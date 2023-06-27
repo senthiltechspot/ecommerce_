@@ -1,6 +1,6 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
-const Category = require('./category.model'); // Import the Category model
+const Category = require('./category.model');
 
 const Product = sequelize.define('Product', {
   id: {
@@ -12,32 +12,57 @@ const Product = sequelize.define('Product', {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  description: {
-    type: DataTypes.TEXT,
-    allowNull: false,
-  },
-  qty: {
+  price: {
     type: DataTypes.INTEGER,
     allowNull: false,
   },
-  originalPrice: {
-    type: DataTypes.DECIMAL(10, 2),
+  pictures: {
+    type: DataTypes.JSON,
+    allowNull: true,
+  },
+  smPictures: {
+    type: DataTypes.JSON,
+    allowNull: true,
+  },
+  shortDesc: {
+    type: DataTypes.TEXT,
+    allowNull: true,
+  },
+  stock: {
+    type: DataTypes.INTEGER,
     allowNull: false,
   },
-  offerPrice: {
-    type: DataTypes.DECIMAL(10, 2),
+  category: {
+    type: DataTypes.JSON,
     allowNull: true,
   },
-  imageUrl: {
-    type: DataTypes.TEXT, // Use TEXT data type for image URLs
+  brands: {
+    type: DataTypes.JSON,
     allowNull: true,
-    get() {
-      const imageUrl = this.getDataValue('imageUrl');
-      return imageUrl ? JSON.parse(imageUrl) : [];
-    },
-    set(value) {
-      this.setDataValue('imageUrl', JSON.stringify(value));
-    },
+  },
+  ratings: {
+    type: DataTypes.INTEGER,
+    allowNull: true,
+  },
+  reviews: {
+    type: DataTypes.INTEGER,
+    allowNull: true,
+  },
+  variants: {
+    type: DataTypes.JSON,
+    allowNull: true,
+  },
+  top: {
+    type: DataTypes.BOOLEAN,
+    allowNull: true,
+  },
+  new: {
+    type: DataTypes.BOOLEAN,
+    allowNull: true,
+  },
+  featured: {
+    type: DataTypes.BOOLEAN,
+    allowNull: true,
   },
 });
 
